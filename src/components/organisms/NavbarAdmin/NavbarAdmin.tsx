@@ -1,6 +1,6 @@
 import { Avatar, Center, Flex, Group, Header, Menu, Text } from "@mantine/core";
 import React from "react";
-import { IconLogout, IconUser } from "@tabler/icons-react";
+import { IconArrowBackUp, IconLogout, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 
 const NavbarAdmin = () => {
@@ -30,8 +30,14 @@ const NavbarAdmin = () => {
                   </Group>
                 </Menu.Item>
                 <Menu.Divider />
-                <Menu.Item w={160}>
-                  <Group spacing={8} onClick={() => router.push("/")}>
+                <Menu.Item w={160} onClick={() => router.push("/")}>
+                  <Group spacing={8}>
+                    <IconArrowBackUp size={20} />
+                    <Text>Back to website</Text>
+                  </Group>
+                </Menu.Item>
+                <Menu.Item w={160} onClick={() => router.push("/")}>
+                  <Group spacing={8}>
                     <IconLogout size={20} />
                     <Text>Keluar</Text>
                   </Group>

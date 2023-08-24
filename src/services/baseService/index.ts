@@ -1,4 +1,4 @@
-import useQuery from "../../../hooks/useQuery";
+import useQuery from "../../../toolkit/useQuery";
 import { BaseService } from "./base";
 
 export const useGetAllBase = () => {

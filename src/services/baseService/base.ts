@@ -1,4 +1,4 @@
-import { instance } from "../../../hooks/instance";
+import { instance } from "../../../toolkit/instance";
 
 const apiClient = instance({
   baseURL: "/api/v1",

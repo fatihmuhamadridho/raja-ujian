@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 export type packageModelProps = {
-  package_id: Schema.Types.ObjectId;
+  package_id?: Schema.Types.ObjectId;
   name: string;
   group: string;
   quizs?: Schema.Types.ObjectId;

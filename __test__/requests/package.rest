@@ -1,0 +1,11 @@
+###
+GET http://localhost:3000/api/v1/package
+
+###
+POST http://localhost:3000/api/v1/package
+Content-Type: application/json
+
+{
+    "name": "CPNS 2021 ARITMETIKA",
+    "group": "CPNS"
+}

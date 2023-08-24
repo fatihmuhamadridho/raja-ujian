@@ -1,5 +1,5 @@
-import { Center, Navbar, Stack, Tooltip } from "@mantine/core";
-import { IconArticle, IconHome, IconUser } from "@tabler/icons-react";
+import { Center, Divider, Navbar, Stack, Tooltip } from "@mantine/core";
+import { IconArticle, IconHome, IconPackage, IconUser } from "@tabler/icons-react";
 import React from "react";
 
 const SidebarAdmin = () => {
@@ -10,10 +10,15 @@ const SidebarAdmin = () => {
           <Tooltip label="Home" position="right">
             <IconHome />
           </Tooltip>
-          <Tooltip label="Home" position="right">
+          <Divider />
+          <Tooltip label="Paket Soal" position="right">
+            <IconPackage />
+          </Tooltip>
+          <Tooltip label="Soal" position="right">
             <IconArticle />
           </Tooltip>
-          <Tooltip label="Home" position="right">
+          <Divider />
+          <Tooltip label="User" position="right">
             <IconUser />
           </Tooltip>
         </Stack>

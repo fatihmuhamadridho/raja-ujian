@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 export type quizModelProps = {
-  quiz_id: Schema.Types.ObjectId;
+  quiz_id?: Schema.Types.ObjectId;
   question: string;
   multiple_choice: String[];
   correct_answer: string;
