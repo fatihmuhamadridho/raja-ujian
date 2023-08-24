@@ -10,8 +10,8 @@ const NavbarAdmin = () => {
     <Header className="sticky" py={8} height={60}>
       <Center px={16} w={"100%"} h={"100%"}>
         <Flex w={"100%"} h={"100%"} align={"center"} justify={"space-between"}>
-          <Text className="cursor-pointer" fz={22} onClick={() => router.push("/")}>
-            Raja Ujian
+          <Text className="cursor-pointer" fz={22} onClick={() => router.push("/admin")}>
+            Raja Ujian Dashboard
           </Text>
           <Group>
             <Menu>
@@ -23,15 +23,15 @@ const NavbarAdmin = () => {
               </Menu.Target>
 
               <Menu.Dropdown>
-                <Menu.Item w={175}>
+                <Menu.Item w={160}>
                   <Group spacing={8}>
                     <IconUser size={20} />
                     <Text>Profil</Text>
                   </Group>
                 </Menu.Item>
                 <Menu.Divider />
-                <Menu.Item w={175}>
-                  <Group spacing={8}>
+                <Menu.Item w={160}>
+                  <Group spacing={8} onClick={() => router.push("/")}>
                     <IconLogout size={20} />
                     <Text>Keluar</Text>
                   </Group>

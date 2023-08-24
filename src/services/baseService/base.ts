@@ -1,12 +1,12 @@
-import { instance } from '@/hooks/instance';
+import { instance } from "../../../hooks/instance";
 
 const apiClient = instance({
-  baseURL: '/api/v1'
+  baseURL: "/api/v1",
 });
 
 export class BaseService {
   static ApiEndpoint = {
-    base: '/base'
+    base: "/base",
   };
 
   static getAlllBase() {

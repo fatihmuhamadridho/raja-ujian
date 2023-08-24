@@ -4,7 +4,7 @@ import React from "react";
 
 const SidebarAdmin = () => {
   return (
-    <Navbar className="sticky" py={16} width={{ base: 64 }}>
+    <Navbar className="sticky" py={24} width={{ base: 64 }}>
       <Center>
         <Stack spacing={24}>
           <Tooltip label="Home" position="right">
