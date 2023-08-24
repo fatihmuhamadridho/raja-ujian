@@ -3,32 +3,22 @@ import React from "react";
 import { IconLogout, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 
-const Navbar = () => {
+const NavbarAdmin = () => {
   const router = useRouter();
 
   return (
-    <Header py={8} height={60} bg={"#769FCD"}>
+    <Header className="sticky" py={8} height={60}>
       <Center px={16} w={"100%"} h={"100%"}>
-        <Flex w={"100%"} maw={1280} h={"100%"} align={"center"} justify={"space-between"}>
-          <Text className="cursor-pointer" fz={22} color="white" onClick={() => router.push("/")}>
+        <Flex w={"100%"} h={"100%"} align={"center"} justify={"space-between"}>
+          <Text className="cursor-pointer" fz={22} onClick={() => router.push("/")}>
             Raja Ujian
           </Text>
-          <Group>
-            <Text className="cursor-pointer" fz={14} color="white">
-              Beranda
-            </Text>
-            <Text className="cursor-pointer" fz={14} color="white">
-              About
-            </Text>
-          </Group>
           <Group>
             <Menu>
               <Menu.Target>
                 <Flex className="cursor-pointer" align={"center"} gap={8}>
                   <Avatar size={28} radius={"100%"} />
-                  <Text fz={16} color="white">
-                    Tirta Puspitasari
-                  </Text>
+                  <Text fz={16}>Tirta Puspitasari</Text>
                 </Flex>
               </Menu.Target>
 
@@ -55,4 +45,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarAdmin;
