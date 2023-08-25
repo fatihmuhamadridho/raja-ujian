@@ -1,4 +1,4 @@
-import { Avatar, Center, Flex, Group, Header, Menu, Text } from "@mantine/core";
+import { Anchor, Avatar, Center, Flex, Group, Header, Menu, Text } from "@mantine/core";
 import React from "react";
 import { IconLogout, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/router";
@@ -10,9 +10,9 @@ const Navbar = () => {
     <Header py={8} height={60} bg={"#769FCD"}>
       <Center px={16} w={"100%"} h={"100%"}>
         <Flex w={"100%"} maw={1280} h={"100%"} align={"center"} justify={"space-between"}>
-          <Text className="cursor-pointer" fz={22} color="white" onClick={() => router.push("/")}>
-            Raja Ujian
-          </Text>
+          <Anchor underline={false} href="/" color="white">
+            <Text fz={22}>Raja Ujian</Text>
+          </Anchor>
           <Group>
             <Text className="cursor-pointer" fz={14} color="white">
               Beranda

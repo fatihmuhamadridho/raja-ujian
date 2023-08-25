@@ -5,3 +5,7 @@ Authorization: Basic superadmin21:superadmin21
 ###
 GET http://localhost:3000/api/v1/reset/packages
 Authorization: Basic superadmin21:superadmin21
+
+###
+GET http://localhost:3000/api/v1/reset/quizs
+Authorization: Basic superadmin21:superadmin21

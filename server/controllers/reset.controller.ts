@@ -1,13 +1,16 @@
 import mongoose from "mongoose";
 import { packageModel } from "../models/package.model";
+import { quizModel } from "../models/quiz.model";
 
 export class ResetController {
   static async resetAll() {
     const packages = await packageModel.deleteMany({});
+    const quizs = await quizModel.deleteMany({});
     return {
       status: true,
       data: {
         packages,
+        quizs,
       },
     };
   }

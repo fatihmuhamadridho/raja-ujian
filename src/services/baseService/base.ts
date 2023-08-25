@@ -1,12 +1,12 @@
 import { instance } from "../../../toolkit/instance";
 
 const apiClient = instance({
-  baseURL: "/api/v1",
+  baseURL: "https://fakestoreapi.com",
 });
 
 export class BaseService {
   static ApiEndpoint = {
-    base: "/base",
+    base: "/products",
   };
 
   static getAlllBase() {

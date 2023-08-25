@@ -1,15 +1,15 @@
 import useQuery from "../../../toolkit/useQuery";
-import { BaseService } from "./base";
+import { PackageService } from "./package";
 
-export const useGetAllBase = () => {
+export const useGetAllPackage = () => {
   const { data, status, isFetching } = useQuery({
-    key: ["getAllBase"],
+    key: ["getAllPackage"],
     fetchAction: async () => {
-      const response = await BaseService.getAlllBase();
+      const response = await PackageService.getAllPackage();
       return response;
     },
     select: (data: any) => {
-      return data.data;
+      return data.data.data;
     },
   });
 

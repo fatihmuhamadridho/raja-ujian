@@ -1,9 +1,9 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from "axios";
 
 const instance = ({ baseURL, ...options }: AxiosRequestConfig) => {
   const baseAxios = axios.create({
     baseURL,
-    ...options
+    ...options,
   });
 
   baseAxios.interceptors.request.use(
@@ -13,7 +13,7 @@ const instance = ({ baseURL, ...options }: AxiosRequestConfig) => {
         return config;
       }
 
-      const token = localStorage.getItem('fmracto');
+      const token = localStorage?.getItem("fmracto");
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }

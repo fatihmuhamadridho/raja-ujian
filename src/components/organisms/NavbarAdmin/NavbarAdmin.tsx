@@ -1,7 +1,8 @@
-import { Avatar, Center, Flex, Group, Header, Menu, Text } from "@mantine/core";
+import { Anchor, Avatar, Center, Flex, Group, Header, Menu, Text } from "@mantine/core";
 import React from "react";
 import { IconArrowBackUp, IconLogout, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const NavbarAdmin = () => {
   const router = useRouter();

@@ -1,4 +1,5 @@
 import { packageModel, packageModelProps } from "../models/package.model";
+import { quizModel } from "../models/quiz.model";
 
 export class PackageController {
   static async getAll() {
