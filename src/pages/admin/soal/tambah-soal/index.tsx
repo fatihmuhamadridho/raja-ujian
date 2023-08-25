@@ -1,5 +1,5 @@
 import DefaultAdmin from "@/components/templates/DefaultAdmin/DefaultAdmin";
-import { Button, Stack, Text, TextInput } from "@mantine/core";
+import { Button, NumberInput, Stack, Text, TextInput } from "@mantine/core";
 import { Form, Formik } from "formik";
 import React from "react";
 
@@ -16,7 +16,11 @@ const TambahSoalAdminPage = () => {
         >
           {({ handleSubmit, values, setFieldValue }) => (
             <Form onSubmit={handleSubmit}>
-              <TextInput label="Name" onChange={e => setFieldValue("name", e.target.value)} />
+              <NumberInput label="Nomor Soal" />
+              <TextInput label="Isi Soal (rich text editor)" />
+              <TextInput label="Pilihan Ganda (Bikin 5 multiple choice)" />
+              <TextInput label="Jawaban yang benar" />
+              <NumberInput label="Bobot Nilai" />
               <TextInput label="Group" onChange={e => setFieldValue("group", e.target.value)} />
               <Button mt={16} variant="default" type="submit">
                 Submit
