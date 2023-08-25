@@ -1,0 +1,14 @@
+###
+GET http://localhost:3000/api/v1/user_progress
+
+###
+POST http://localhost:3000/api/v1/user_progress
+Content-Type: application/json
+
+{
+    "last_quiz_number": 5,
+    "score_total": 25,
+    "isFinished": false,
+    "user": "64e8ddaacfe657e37aa15ad2",
+    "package": "64e8e7a6512f1256ac6d3605"
+}

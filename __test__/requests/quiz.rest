@@ -2,12 +2,17 @@
 GET http://localhost:3000/api/v1/quiz
 
 ###
+GET http://localhost:3000/api/v1/quiz?package_id=64e8de94512f1256ac6d3580
+
+###
 POST http://localhost:3000/api/v1/quiz
 Content-Type: application/json
 
 {
+    "number": 1,
     "question": "test soal",
     "multiple_choice": ["1", "2", "3", "4", "5"],
     "correct_answer": "1",
-    "package": "64e8d903a0e4df695ba27d01"
+    "score": 5,
+    "package": "64e8de94512f1256ac6d3580"
 }

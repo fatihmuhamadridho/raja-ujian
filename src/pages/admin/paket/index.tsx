@@ -6,7 +6,6 @@ import { IconPencil, IconSearch, IconTrash } from "@tabler/icons-react";
 import React from "react";
 import { packageModelProps } from "../../../../server/models/package.model";
 import { quizModelProps } from "../../../../server/models/quiz.model";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 interface packageDataProps extends Omit<packageModelProps, "quizs"> {

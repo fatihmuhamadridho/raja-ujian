@@ -1,9 +1,14 @@
+import { Schema } from "mongoose";
 import { packageModel } from "../models/package.model";
 import { quizModel, quizModelProps } from "../models/quiz.model";
 
 export class QuizController {
-  static async getAll() {
-    const response = await quizModel.find({}).populate("package", undefined, packageModel);
+  static async getAll(query?: { package_id?: Schema.Types.ObjectId }) {
+    const filter: any = {};
+    if (query?.package_id) {
+      filter.package = query?.package_id;
+    }
+    const response = await quizModel.find(filter).populate("package", undefined, packageModel);
     return {
       status: true,
       data: response,
@@ -17,11 +22,13 @@ export class QuizController {
   }
 
   static async post(props: quizModelProps) {
-    const { question, multiple_choice, correct_answer, package: packageId } = props;
+    const { number, question, multiple_choice, correct_answer, score, package: packageId } = props;
     const response = await quizModel.create({
+      number,
       question,
       multiple_choice,
       correct_answer,
+      score,
       package: packageId,
     });
     await packageModel.findByIdAndUpdate(packageId, {

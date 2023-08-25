@@ -9,6 +9,6 @@ POST http://localhost:3000/api/v1/package
 Content-Type: application/json
 
 {
-    "name": "CPNS 2021 ARITMETIKA",
+    "name": "CPNS 2021 ARITMETIKA 2",
     "group": "CPNS"
 }
