@@ -1,28 +1,38 @@
 import DataTable, { DataTableHeaderProps } from "@/components/atoms/DataTable";
 import DefaultAdmin from "@/components/templates/DefaultAdmin/DefaultAdmin";
-import { useGetAllPackage } from "@/services/packageService";
 import { Button, Flex, Stack, Text, TextInput } from "@mantine/core";
 import { IconPencil, IconSearch, IconTrash } from "@tabler/icons-react";
 import React from "react";
 import { useRouter } from "next/router";
+import { useGetAllQuiz } from "@/services/quizService";
+import { quizModelProps } from "../../../../server/models/quiz.model";
+import { packageModelProps } from "../../../../server/models/package.model";
+
+interface quizDataProps extends Omit<quizModelProps, "package"> {
+  package: packageModelProps;
+}
 
 const SoalAdminPage = () => {
   const router = useRouter();
-  const { data: listPackage } = useGetAllPackage();
+  const { data: listQuiz } = useGetAllQuiz();
+  console.log({ listQuiz });
 
-  const renderAction = (values: any) => {
-    return (
-      <Flex gap={4}>
-        <IconPencil className="p-1 cursor-pointer" size={32} />
-        <IconTrash className="p-1 cursor-pointer" size={32} />
-      </Flex>
-    );
-  };
+  const renderPertanyaan = (values: quizDataProps) => <Text>{values.question}</Text>;
+  const renderPaketSoal = (values: quizDataProps) => (
+    <Text>{String(values?.package?.package_id)}</Text>
+  );
+  const renderAction = (values: any) => (
+    <Flex gap={4}>
+      <IconPencil className="p-1 cursor-pointer" size={32} />
+      <IconTrash className="p-1 cursor-pointer" size={32} />
+    </Flex>
+  );
 
   const tableHeader: DataTableHeaderProps[] = [
     { label: "No", key: "index" },
-    { label: "Nama Soal", key: "name" },
-    { label: "Group", key: "group" },
+    { label: "Pertanyaan", key: renderPertanyaan },
+    { label: "Paket Soal", key: renderPaketSoal },
+    { label: "Jawaban", key: "correct_answer" },
     { label: "Aksi", key: renderAction },
   ];
 
@@ -38,7 +48,7 @@ const SoalAdminPage = () => {
           </Button>
         </Flex>
         <TextInput icon={<IconSearch size={18} />} placeholder="Cari berdasarkan username" />
-        <DataTable header={tableHeader} data={listPackage} />
+        <DataTable header={tableHeader} data={listQuiz} />
       </Stack>
     </DefaultAdmin>
   );

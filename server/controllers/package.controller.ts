@@ -10,9 +10,11 @@ export class PackageController {
     };
   }
 
-  static async getOne() {
+  static async getOne(package_id: string) {
+    const response = await packageModel.findById(package_id);
     return {
       status: true,
+      data: response,
     };
   }
 

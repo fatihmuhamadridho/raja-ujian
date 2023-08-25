@@ -2,6 +2,9 @@
 GET http://localhost:3000/api/v1/package
 
 ###
+GET http://localhost:3000/api/v1/package/64e829a3dcd2bcda9794ea57
+
+###
 POST http://localhost:3000/api/v1/package
 Content-Type: application/json
 

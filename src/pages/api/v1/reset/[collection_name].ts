@@ -1,2 +1,2 @@
-import resetDetailRoutes from "../../../../../server/routes/reset/resetDetail.routes";
+import resetDetailRoutes from "../../../../../server/routes/resetRoute/resetDetail.routes";
 export default resetDetailRoutes;

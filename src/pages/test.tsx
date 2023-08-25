@@ -2,7 +2,7 @@ import Default from "@/components/templates/Default/Default";
 import { Box, Button, Divider, Flex, Group, Paper, Stack, Text } from "@mantine/core";
 import React from "react";
 
-const SoalPage = () => {
+const QuizIdPage = () => {
   return (
     <Default title="Soal Try Out - CPNS">
       <Stack>
@@ -89,4 +89,4 @@ const SoalPage = () => {
   );
 };
 
-export default SoalPage;
+export default QuizIdPage;

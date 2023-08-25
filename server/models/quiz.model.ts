@@ -2,9 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 export type quizModelProps = {
   quiz_id?: Schema.Types.ObjectId;
+  number: number;
   question: string;
   multiple_choice: string[];
   correct_answer: string;
+  score?: number;
   package: Schema.Types.ObjectId;
 };
 
@@ -15,9 +17,11 @@ const quizSchema = new mongoose.Schema<quizModelProps>(
       type: Schema.Types.ObjectId,
       auto: true,
     },
+    number: Schema.Types.Number,
     question: Schema.Types.String,
     multiple_choice: [{ type: Schema.Types.String }],
     correct_answer: Schema.Types.String,
+    score: Schema.Types.Number,
     package: {
       type: Schema.Types.ObjectId,
       ref: "package",

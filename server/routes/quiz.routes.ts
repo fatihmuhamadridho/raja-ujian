@@ -3,12 +3,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { mongooseMiddleware } from "../middlewares/mongoose.middleware";
 import { QuizController } from "../controllers/quiz.controller";
 import { quizModelProps } from "../models/quiz.model";
+import mongoose from "mongoose";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
 router.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
   await mongooseMiddleware();
   await next();
+  await mongoose.disconnect();
 });
 
 router.get(async (req: NextApiRequest, res: NextApiResponse) => {

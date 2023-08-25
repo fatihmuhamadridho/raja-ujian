@@ -19,7 +19,7 @@ export interface userModelProps {
 }
 
 const apiClient = instance({
-  baseURL: "http://localhost:4000/api/v1",
+  baseURL: process.env.NEXT_PUBLIC_FATIHMUHAMADRIDHO_ADMIN_API + "/api/v1",
   headers: { Authorization: "Basic " + process.env.NEXT_PUBLIC_BASIC_AUTHENTICATION },
 });
 

@@ -1,2 +1,2 @@
-import resetRoutes from "../../../../../server/routes/reset/reset.routes";
+import resetRoutes from "../../../../../server/routes/resetRoute/reset.routes";
 export default resetRoutes;
