@@ -35,6 +35,8 @@
   },
   "devDependencies": {
     "mongoose": "^7.4.4",
-    "next-connect": "^1.0.0"
+    "next-connect": "^1.0.0",
+    "suneditor": "^2.45.1",
+    "suneditor-react": "^3.6.1"
   }
 }

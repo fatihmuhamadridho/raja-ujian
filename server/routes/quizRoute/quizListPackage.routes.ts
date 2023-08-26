@@ -1,8 +1,8 @@
 import { createRouter } from "next-connect";
 import { NextApiRequest, NextApiResponse } from "next";
 import { mongooseMiddleware } from "../../middlewares/mongoose.middleware";
-import { PackageController } from "../../controllers/package.controller";
 import mongoose from "mongoose";
+import { QuizController } from "../../controllers/quiz.controller";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
@@ -13,9 +13,8 @@ router.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
 });
 
 router.get(async (req: NextApiRequest, res: NextApiResponse) => {
-  const { package_id } = req.query;
   try {
-    const response = await PackageController.getOne(String(package_id));
+    const response = await QuizController.getListPackage();
     res.status(200).json(response);
   } catch (error: any) {
     res.status(500).json({ status: false, error: error.stack });

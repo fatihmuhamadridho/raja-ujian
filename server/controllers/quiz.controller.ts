@@ -21,6 +21,14 @@ export class QuizController {
     };
   }
 
+  static async getListPackage() {
+    const response = await packageModel.find({}).select("name");
+    return {
+      status: true,
+      data: response,
+    };
+  }
+
   static async post(props: quizModelProps) {
     const { number, question, multiple_choice, correct_answer, score, package: packageId } = props;
     const response = await quizModel.create({

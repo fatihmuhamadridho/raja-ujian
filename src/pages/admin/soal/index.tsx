@@ -17,9 +17,14 @@ const SoalAdminPage = () => {
   const { data: listQuiz } = useGetAllQuiz();
   console.log({ listQuiz });
 
-  const renderPertanyaan = (values: quizDataProps) => <Text>{values.question}</Text>;
+  const renderPertanyaan = (values: quizDataProps) => (
+    <div dangerouslySetInnerHTML={{ __html: values.question }} />
+  );
   const renderPaketSoal = (values: quizDataProps) => (
     <Text>{String(values?.package?.package_id)}</Text>
+  );
+  const renderJawaban = (values: quizDataProps) => (
+    <div dangerouslySetInnerHTML={{ __html: values.correct_answer }} />
   );
   const renderAction = (values: any) => (
     <Flex gap={4}>
@@ -32,7 +37,7 @@ const SoalAdminPage = () => {
     { label: "No", key: "index" },
     { label: "Pertanyaan", key: renderPertanyaan },
     { label: "Paket Soal", key: renderPaketSoal },
-    { label: "Jawaban", key: "correct_answer" },
+    { label: "Jawaban", key: renderJawaban },
     { label: "Aksi", key: renderAction },
   ];
 
