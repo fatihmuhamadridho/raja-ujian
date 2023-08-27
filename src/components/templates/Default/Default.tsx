@@ -1,5 +1,6 @@
 import Footer from "@/components/organisms/Footer/Footer";
 import Navbar from "@/components/organisms/Navbar/Navbar";
+import { AuthProvider } from "@/contexts/AuthContext/AuthProvider";
 import { Container } from "@mantine/core";
 import Head from "next/head";
 import React from "react";
@@ -17,13 +18,15 @@ const Default = (props: DefaultProps) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Container fluid p={0} mx={"0"}>
-        <Navbar />
-        <Container py={32} px={16} maw={900 + 16} mih={"calc(100vh - 60px - 50px)"} fluid>
-          {children}
+      <AuthProvider>
+        <Container fluid p={0} mx={"0"}>
+          <Navbar />
+          <Container py={32} px={16} maw={900 + 16} mih={"calc(100vh - 60px - 50px)"} fluid>
+            {children}
+          </Container>
+          <Footer />
         </Container>
-        <Footer />
-      </Container>
+      </AuthProvider>
     </>
   );
 };

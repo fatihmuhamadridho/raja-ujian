@@ -1,4 +1,5 @@
 import DefaultAdmin from "@/components/templates/DefaultAdmin/DefaultAdmin";
+import { withAdminAuth } from "@/contexts/AuthContext/AuthProvider";
 import { Paper, Text } from "@mantine/core";
 import React from "react";
 
@@ -17,4 +18,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default withAdminAuth(AdminPage);

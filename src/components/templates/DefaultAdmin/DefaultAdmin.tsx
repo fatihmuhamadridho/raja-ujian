@@ -1,5 +1,6 @@
 import NavbarAdmin from "@/components/organisms/NavbarAdmin/NavbarAdmin";
 import SidebarAdmin from "@/components/organisms/SidebarAdmin/SidebarAdmin";
+import { AuthProvider } from "@/contexts/AuthContext/AuthProvider";
 import { Container, Flex } from "@mantine/core";
 import Head from "next/head";
 import React from "react";

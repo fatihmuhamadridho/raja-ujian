@@ -1,11 +1,22 @@
-import { Anchor, Avatar, Center, Divider, Flex, Group, Header, Menu, Text } from "@mantine/core";
+import {
+  Anchor,
+  Avatar,
+  Button,
+  Center,
+  Divider,
+  Flex,
+  Group,
+  Header,
+  Menu,
+  Text,
+} from "@mantine/core";
 import React from "react";
 import { IconLogout, IconUser } from "@tabler/icons-react";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext/auth.context";
 
 const Navbar = () => {
-  const router = useRouter();
+  const { user } = useAuth();
 
   return (
     <Header py={8} height={60} bg={"#769FCD"}>
@@ -18,42 +29,60 @@ const Navbar = () => {
           </Link>
           <Group>
             <Group>
-              <Text className="cursor-pointer" fz={14} color="white">
-                Beranda
-              </Text>
-              <Text className="cursor-pointer" fz={14} color="white">
-                About
-              </Text>
+              <Link href={"/"}>
+                <Text fz={14} color="white">
+                  Beranda
+                </Text>
+              </Link>
+              <Link href={"/"}>
+                <Text fz={14} color="white">
+                  About
+                </Text>
+              </Link>
             </Group>
             <Divider orientation="vertical" />
-            <Group>
-              <Menu>
-                <Menu.Target>
-                  <Flex className="cursor-pointer" align={"center"} gap={8}>
-                    <Avatar size={28} radius={"100%"} />
-                    <Text fz={16} color="white">
-                      Tirta Puspitasari
-                    </Text>
-                  </Flex>
-                </Menu.Target>
+            {!user && (
+              <Group>
+                <Button className="border-white" variant="white">
+                  <Text color="white">Daftar</Text>
+                </Button>
+                <Link href={"/login"}>
+                  <Button className="border-white" variant="white">
+                    <Text color="white">Masuk</Text>
+                  </Button>
+                </Link>
+              </Group>
+            )}
+            {user && (
+              <Group>
+                <Menu>
+                  <Menu.Target>
+                    <Flex className="cursor-pointer" align={"center"} gap={8}>
+                      <Avatar size={28} radius={"100%"} />
+                      <Text fz={16} color="white">
+                        {user?.username}
+                      </Text>
+                    </Flex>
+                  </Menu.Target>
 
-                <Menu.Dropdown>
-                  <Menu.Item w={175}>
-                    <Group spacing={8}>
-                      <IconUser size={20} />
-                      <Text>Profil</Text>
-                    </Group>
-                  </Menu.Item>
-                  <Menu.Divider />
-                  <Menu.Item w={175}>
-                    <Group spacing={8}>
-                      <IconLogout size={20} />
-                      <Text>Keluar</Text>
-                    </Group>
-                  </Menu.Item>
-                </Menu.Dropdown>
-              </Menu>
-            </Group>
+                  <Menu.Dropdown>
+                    <Menu.Item w={175}>
+                      <Group spacing={8}>
+                        <IconUser size={20} />
+                        <Text>Profil</Text>
+                      </Group>
+                    </Menu.Item>
+                    <Menu.Divider />
+                    <Menu.Item w={175}>
+                      <Group spacing={8}>
+                        <IconLogout size={20} />
+                        <Text>Keluar</Text>
+                      </Group>
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
+              </Group>
+            )}
           </Group>
         </Flex>
       </Center>

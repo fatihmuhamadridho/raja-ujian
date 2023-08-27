@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "suneditor/dist/css/suneditor.min.css";
+import { AuthProvider } from "@/contexts/AuthContext/AuthProvider";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient({
@@ -13,10 +14,13 @@ export default function App({ Component, pageProps }: AppProps) {
       },
     },
   });
+
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider>
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </MantineProvider>
     </QueryClientProvider>
   );

@@ -13,7 +13,7 @@ const instance = ({ baseURL, ...options }: AxiosRequestConfig) => {
         return config;
       }
 
-      const token = localStorage?.getItem("fmracto");
+      const token = localStorage?.getItem("at"!);
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }

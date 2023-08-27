@@ -2,6 +2,9 @@
 GET http://localhost:3000/api/v1/user_progress
 
 ###
+GET http://localhost:3000/api/v1/user_progress/64e8ddaacfe657e37aa15ad2/64e8e7a6512f1256ac6d3605
+
+###
 POST http://localhost:3000/api/v1/user_progress
 Content-Type: application/json
 

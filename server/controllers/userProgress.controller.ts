@@ -14,9 +14,13 @@ export class UserProgressController {
     };
   }
 
-  static async getOne() {
+  static async getOne({ userId, packageId }: { userId: string; packageId: string }) {
+    const response = await userProgressModel.findOne({
+      $and: [{ user: userId, package: packageId }],
+    });
     return {
       status: true,
+      data: response,
     };
   }
 

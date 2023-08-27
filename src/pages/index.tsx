@@ -9,6 +9,8 @@ const HomePage = () => {
   const router = useRouter();
   const { data: listPaket } = useGetAllPackage();
 
+  console.log({ router: router.asPath });
+
   return (
     <Default title="Raja Ujian">
       <Stack spacing={8}>
