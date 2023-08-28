@@ -16,7 +16,7 @@ export class AuthService {
   };
 
   static getPrivileges() {
-    return apiClient.get(this.ApiEndpoint.privileges);
+    return apiClient.get(this.ApiEndpoint.privileges).catch(error => console.clear());
   }
 
   static login(payload: loginProps) {

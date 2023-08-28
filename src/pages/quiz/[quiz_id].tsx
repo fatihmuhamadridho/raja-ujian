@@ -1,18 +1,40 @@
 import Default from "@/components/templates/Default/Default";
 import { useAuth } from "@/contexts/AuthContext/auth.context";
+import { useGetOneQuiz } from "@/services/quizService";
 import { useGetOneUserProgress } from "@/services/userProgressService";
 import { Box, Button, Divider, Flex, Group, Paper, Stack, Text } from "@mantine/core";
 import { useRouter } from "next/router";
 import React from "react";
+import { quizModelProps } from "../../../server/models/quiz.model";
+import { userProgressModelProps } from "../../../server/models/userProgress.model";
+
+interface userProgressData extends Omit<userProgressModelProps, "package"> {
+  package: {
+    quizs: any[];
+  };
+}
 
 const QuizIdPage = () => {
   const router = useRouter();
   const { user } = useAuth();
   const { quiz_id } = router.query;
-  const { data: detailUserProgress } = useGetOneUserProgress({
-    userId: user?.user_id,
-    packageId: String(quiz_id),
+  const { data: detailUserProgress, status }: { data: userProgressData; [key: string]: any } =
+    useGetOneUserProgress({
+      userId: user?.user_id,
+      packageId: String(quiz_id),
+    });
+  const { data: detailQuiz }: { data: quizModelProps } = useGetOneQuiz(
+    String(detailUserProgress?.quiz_order[detailUserProgress?.last_quiz_index])
+  );
+
+  console.log({
+    detailUserProgress,
+    detailQuiz,
   });
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Default title="Soal Try Out - CPNS">
@@ -56,53 +78,45 @@ const QuizIdPage = () => {
           </Paper>
           <Paper p={16} withBorder>
             <Stack spacing={12}>
-              <Text>Soal Nomor 1/50</Text>
+              <Text>
+                Soal Nomor {detailQuiz?.number}/{detailUserProgress?.package?.quizs?.length}
+              </Text>
               <Divider />
               <Box mb={64}>
-                <Text>
-                  Tabungan Ayu Rp2.000,00 lebih banyak daripada tabungan Bagus. Tabungan Cinta
-                  sebanyak tiga kali tabungan Bagus ditambah dengan Ayu. Jika jumlah tabungan mereka
-                  bertiga adalah Rp70.000,00 berapa rupiah tabungan Cinta?
-                </Text>
+                <div dangerouslySetInnerHTML={{ __html: detailQuiz?.question }} />
               </Box>
               <Text fs={"italic"}>Pilih jawaban berikut :</Text>
               <Stack spacing={8}>
-                <Paper p={12} bg={"#D6E6F2"} radius={4} withBorder>
-                  <Flex>
-                    <Text>A.</Text>
-                    <Text>Rp 11.000.000</Text>
-                  </Flex>
-                </Paper>
-                <Paper p={12} radius={4} withBorder>
-                  <Flex>
-                    <Text>B.</Text>
-                    <Text>Rp 11.000.000</Text>
-                  </Flex>
-                </Paper>
-                <Paper p={12} radius={4} withBorder>
-                  <Flex>
-                    <Text>C.</Text>
-                    <Text>Rp 11.000.000</Text>
-                  </Flex>
-                </Paper>
-                <Paper p={12} radius={4} withBorder>
-                  <Flex>
-                    <Text>D.</Text>
-                    <Text>Rp 11.000.000</Text>
-                  </Flex>
-                </Paper>
-                <Paper p={12} radius={4} withBorder>
-                  <Flex>
-                    <Text>E.</Text>
-                    <Text>Rp 11.000.000</Text>
-                  </Flex>
-                </Paper>
+                {detailQuiz?.multiple_choice?.map((choice, index) => (
+                  <Paper
+                    key={index}
+                    className="cursor-pointer"
+                    p={12}
+                    bg={
+                      detailUserProgress?.selected_answer[detailQuiz?.number - 1] === index
+                        ? "#D6E6F2"
+                        : "white"
+                    }
+                    radius={4}
+                    withBorder
+                  >
+                    <Flex gap={4}>
+                      <Text>{String.fromCharCode(65 + index)}.</Text>
+                      <div dangerouslySetInnerHTML={{ __html: choice }} />
+                    </Flex>
+                  </Paper>
+                ))}
               </Stack>
             </Stack>
           </Paper>
           <Paper p={16} withBorder>
             <Stack spacing={12}>
-              <Text>Jawaban Anda adalah A</Text>
+              <Text>
+                Jawaban Anda adalah{" "}
+                {String.fromCharCode(
+                  65 + detailUserProgress?.selected_answer[detailQuiz?.number - 1]
+                )}
+              </Text>
               <Divider />
               <Flex justify={"space-between"}>
                 <Group>

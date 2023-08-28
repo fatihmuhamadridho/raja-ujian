@@ -14,12 +14,12 @@ export const AuthProvider = ({ children }: { children: any }) => {
       if (token) {
         try {
           const response = await AuthService.getPrivileges();
-          if (response.status === 200) {
+          if (response?.status === 200) {
             setUser(response.data.data);
             setAuthenticated(true);
           }
         } catch (error: any) {
-          console.error(error.stack);
+          // console.error(error.stack);
           localStorage.removeItem("at");
         }
       }
@@ -38,6 +38,10 @@ export const AuthProvider = ({ children }: { children: any }) => {
     setUser(null);
     setAuthenticated(false);
     localStorage.removeItem(localName);
+  }
+
+  if (initializing) {
+    return <div>Loading...</div>;
   }
 
   return (

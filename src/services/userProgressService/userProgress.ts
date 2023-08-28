@@ -14,6 +14,7 @@ export class UserProgressService {
   }
 
   static getOneUserProgress(query: { userId: string; packageId: string }) {
+    if (!query.userId || !query.packageId) return undefined;
     const { userId, packageId } = query;
     return apiClient.get(this.ApiEndpoint.user_progress + `/${userId}` + `/${packageId}`);
   }

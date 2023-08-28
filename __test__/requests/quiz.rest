@@ -2,7 +2,10 @@
 GET http://localhost:3000/api/v1/quiz
 
 ###
-GET http://localhost:3000/api/v1/quiz?package_id=64eb62e6e500c7cdafdf56be
+GET http://localhost:3000/api/v1/quiz/64ea2391512f1256ac6d3650
+
+###
+GET http://localhost:3000/api/v1/quiz?package_id=64e8e7a6512f1256ac6d3605
 
 ###
 GET http://localhost:3000/api/v1/quiz/list_package
@@ -17,5 +20,5 @@ Content-Type: application/json
     "multiple_choice": ["1", "2", "3", "4", "5"],
     "correct_answer": "1",
     "score": 5,
-    "package": "64eb62e6e500c7cdafdf56be"
+    "package": "64e8e7a6512f1256ac6d3605"
 }

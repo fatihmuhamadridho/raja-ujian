@@ -2,7 +2,9 @@ import mongoose, { Schema } from "mongoose";
 
 export type userProgressModelProps = {
   user_progress_id?: any;
-  last_quiz_number: number;
+  quiz_order: any[];
+  selected_answer: any[];
+  last_quiz_index: number;
   score_total: number;
   isFinished: boolean;
   user?: Schema.Types.ObjectId;
@@ -16,7 +18,9 @@ const userProgressSchema = new mongoose.Schema<userProgressModelProps>(
       type: Schema.Types.ObjectId,
       auto: true,
     },
-    last_quiz_number: Schema.Types.Number,
+    quiz_order: Schema.Types.Array,
+    selected_answer: Schema.Types.Array,
+    last_quiz_index: Schema.Types.Number,
     score_total: Schema.Types.Number,
     isFinished: Schema.Types.Boolean,
     user: {

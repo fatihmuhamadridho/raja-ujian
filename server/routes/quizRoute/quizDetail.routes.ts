@@ -1,29 +1,25 @@
 import { createRouter } from "next-connect";
 import { NextApiRequest, NextApiResponse } from "next";
 import { mongooseMiddleware } from "../../middlewares/mongoose.middleware";
+import { QuizController } from "../../controllers/quiz.controller";
+import { quizModelProps } from "../../models/quiz.model";
 import mongoose from "mongoose";
-import { UserProgressController } from "../../controllers/userProgress.controller";
-import { userProgressModelProps } from "../../models/userProgress.model";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
 router.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
   await mongooseMiddleware();
-  await mongoose.startSession();
   await next();
-  await mongoose.connection.close();
+  await mongoose.disconnect();
 });
 
 router.get(async (req: NextApiRequest, res: NextApiResponse) => {
-  const { userId, packageId } = req.query;
+  const { quiz_id }: any = req.query;
   try {
-    const response = await UserProgressController.getOne({
-      userId: String(userId),
-      packageId: String(packageId),
-    });
-    return res.status(200).json(response);
+    const response = await QuizController.getOne(quiz_id);
+    res.status(200).json(response);
   } catch (error: any) {
-    return res.status(500).json({ status: false, error: error.stack });
+    res.status(500).json({ status: false, error: error.stack });
   }
 });
 

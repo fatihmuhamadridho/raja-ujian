@@ -18,7 +18,7 @@ export const useGetAllUserProgress = () => {
 
 export const useGetOneUserProgress = (query: { userId: string; packageId: string }) => {
   const { data, status, isFetching } = useQuery({
-    key: ["getOneUserProgress", query],
+    key: ["getOneUserProgress", query.userId, query.packageId],
     fetchAction: async () => {
       const response = await UserProgressService.getOneUserProgress(query);
       return response;

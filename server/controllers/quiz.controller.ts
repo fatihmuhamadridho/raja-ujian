@@ -15,9 +15,11 @@ export class QuizController {
     };
   }
 
-  static async getOne() {
+  static async getOne(quiz_id: string) {
+    const response = await quizModel.findById(quiz_id);
     return {
       status: true,
+      data: response,
     };
   }
 

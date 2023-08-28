@@ -10,7 +10,7 @@ const router = createRouter<NextApiRequest, NextApiResponse>();
 router.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
   await mongooseMiddleware();
   await next();
-  await mongoose.disconnect();
+  await mongoose.connection.close();
 });
 
 router.get(async (req: NextApiRequest, res: NextApiResponse) => {
@@ -24,7 +24,9 @@ router.get(async (req: NextApiRequest, res: NextApiResponse) => {
 
 router.post(async (req: NextApiRequest, res: NextApiResponse) => {
   const {
-    last_quiz_number,
+    quiz_order,
+    selected_answer,
+    last_quiz_index,
     score_total,
     isFinished,
     user,
@@ -32,7 +34,9 @@ router.post(async (req: NextApiRequest, res: NextApiResponse) => {
   }: userProgressModelProps = req.body;
   try {
     const response = await UserProgressController.post({
-      last_quiz_number,
+      quiz_order,
+      selected_answer,
+      last_quiz_index,
       score_total,
       isFinished,
       user,

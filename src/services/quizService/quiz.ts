@@ -15,6 +15,13 @@ export class QuizService {
     return apiClient.get(this.ApiEndpoint.quiz);
   }
 
+  static getOneQuiz(quiz_id: string) {
+    if (quiz_id === "undefined") return undefined;
+    return apiClient
+      .get(this.ApiEndpoint.quiz + `/${quiz_id}`)
+      .catch((error: any) => console.clear());
+  }
+
   static getQuizListPackage() {
     return apiClient.get(this.ApiEndpoint.list_package);
   }

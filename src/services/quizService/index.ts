@@ -16,6 +16,21 @@ export const useGetAllQuiz = () => {
   return { data, status, isFetching };
 };
 
+export const useGetOneQuiz = (quiz_id: string) => {
+  const { data, status, isFetching } = useQuery({
+    key: ["getOneQuiz", quiz_id],
+    fetchAction: async () => {
+      const response = await QuizService.getOneQuiz(quiz_id);
+      return response;
+    },
+    select: (data: any) => {
+      return data.data.data;
+    },
+  });
+
+  return { data, status, isFetching };
+};
+
 export const useGetQuizListPackage = () => {
   const { data, status, isFetching } = useQuery({
     key: ["getQuizListPackage"],

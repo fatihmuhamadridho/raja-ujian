@@ -9,7 +9,9 @@ POST http://localhost:3000/api/v1/user_progress
 Content-Type: application/json
 
 {
-    "last_quiz_number": 5,
+    "quiz_order": [5,2,3,1,4],
+    "selected_answer": [1,2,3,4,0],
+    "last_quiz_index": 1,
     "score_total": 25,
     "isFinished": false,
     "user": "64e8ddaacfe657e37aa15ad2",
