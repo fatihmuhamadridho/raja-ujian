@@ -1,0 +1,8 @@
+[
+  {
+    "paket_soal_id": "p1",
+    "name": "CPNS 2013",
+    "waktu_pengerjaan": 6600000,
+    "soal": ["a1", "a2", "a3"]
+  }
+]
