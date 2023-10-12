@@ -30,7 +30,7 @@ const RegisterPage = () => {
           {({ handleSubmit, values, setFieldValue }) => (
             <Form className="w-[300px]" onSubmit={handleSubmit}>
               <Stack>
-                <Stack spacing={4}>
+                <Stack gap={4}>
                   <TextInput
                     label="Username"
                     placeholder="username"

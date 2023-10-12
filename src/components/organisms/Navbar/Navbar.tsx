@@ -3,10 +3,10 @@ import {
   Avatar,
   Button,
   Center,
+  Container,
   Divider,
   Flex,
   Group,
-  Header,
   Menu,
   Text,
 } from "@mantine/core";
@@ -19,7 +19,7 @@ const Navbar = () => {
   const { user, onLogout } = useAuth();
 
   return (
-    <Header py={8} height={60} bg={"#769FCD"}>
+    <Container fluid py={8} h={60} bg={"#769FCD"}>
       <Center px={16} w={"100%"} h={"100%"}>
         <Flex
           w={"100%"}
@@ -29,19 +29,19 @@ const Navbar = () => {
           justify={"space-between"}
         >
           <Link href={"/"}>
-            <Text fz={22} color="white">
+            <Text fz={22} c="#fff">
               Raja Ujian
             </Text>
           </Link>
           <Group>
             <Group>
               <Link href={"/"}>
-                <Text fz={14} color="white">
+                <Text fz={14} c="#fff">
                   Beranda
                 </Text>
               </Link>
               <Link href={"/"}>
-                <Text fz={14} color="white">
+                <Text fz={14} c="#fff">
                   About
                 </Text>
               </Link>
@@ -50,13 +50,13 @@ const Navbar = () => {
             {!user && (
               <Group>
                 <Link href={"/register"}>
-                  <Button variant="white">
-                    <Text color="black">Daftar</Text>
+                  <Button variant="default">
+                    <Text c="black">Daftar</Text>
                   </Button>
                 </Link>
                 <Link href={"/login"}>
-                  <Button variant="white">
-                    <Text color="black">Masuk</Text>
+                  <Button variant="default">
+                    <Text c="black">Masuk</Text>
                   </Button>
                 </Link>
               </Group>
@@ -66,8 +66,8 @@ const Navbar = () => {
                 <Menu>
                   <Menu.Target>
                     <Flex className="cursor-pointer" align={"center"} gap={8}>
-                      <Avatar size={28} radius={"100%"} />
-                      <Text fz={16} color="white">
+                      <Avatar size={28} radius={"100%"} bg={"#fff"} />
+                      <Text fz={16} c="#fff">
                         {user?.username}
                       </Text>
                     </Flex>
@@ -75,14 +75,14 @@ const Navbar = () => {
 
                   <Menu.Dropdown>
                     <Menu.Item w={175}>
-                      <Group spacing={8}>
+                      <Group gap={8}>
                         <IconUser size={20} />
                         <Text>Profil</Text>
                       </Group>
                     </Menu.Item>
                     <Menu.Divider />
                     <Menu.Item w={175} onClick={() => onLogout("access_token")}>
-                      <Group spacing={8}>
+                      <Group gap={8}>
                         <IconLogout size={20} />
                         <Text>Keluar</Text>
                       </Group>
@@ -94,7 +94,7 @@ const Navbar = () => {
           </Group>
         </Flex>
       </Center>
-    </Header>
+    </Container>
   );
 };
 

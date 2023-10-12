@@ -12,7 +12,7 @@ const HomePage = () => {
 
   return (
     <Default title="Raja Ujian">
-      <Stack spacing={8}>
+      <Stack gap={8}>
         {listPackageQuiz?.map((item: any, index: number) => {
           return (
             <Paper
