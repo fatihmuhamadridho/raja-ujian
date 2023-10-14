@@ -84,7 +84,7 @@ const PackageQuizDetailPage = () => {
                 <Group justify="space-between" align="center">
                   <Stack>
                     <Text>{session.createdAt}</Text>
-                    {session?.score > 0 && (
+                    {session?.isComplete && (
                       <Group>
                         <Text>
                           {session?.score} /{" "}
@@ -94,7 +94,7 @@ const PackageQuizDetailPage = () => {
                     )}
                   </Stack>
                   <Group>
-                    {session?.score < 1 && (
+                    {session?.isComplete < 1 && (
                       <Button
                         onClick={() =>
                           handleContinueTryout(
