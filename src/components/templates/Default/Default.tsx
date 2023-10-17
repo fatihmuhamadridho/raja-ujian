@@ -17,7 +17,7 @@ const Default = (props: DefaultProps) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Container fluid p={0}>
+      <Container fluid p={0} bg={"#f7fbfc"}>
         <Navbar />
         <Container
           py={32}
@@ -25,6 +25,7 @@ const Default = (props: DefaultProps) => {
           maw={900 + 16}
           mih={"calc(100vh - 60px - 50px)"}
           fluid
+          bg={"#f7fbfc"}
         >
           {children}
         </Container>

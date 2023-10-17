@@ -76,15 +76,20 @@ const PackageQuizDetailPage = () => {
               {detailPackageQuiz?.name}
             </Text>
             <Stack gap={0}>
-              <Text>Waktu Pengerjaan : 120 menit</Text>
-              <Text>Jumlah Soal : 50 soal</Text>
+              <Text>
+                Waktu Pengerjaan : {detailPackageQuiz?.duration} menit
+              </Text>
+              <Text>
+                Jumlah Soal : {detailPackageQuiz?.RajaUjian2_Quizzes?.length}{" "}
+                soal
+              </Text>
             </Stack>
             {listTryoutSessionByUser?.map((session: any, index: number) => (
               <Paper key={index} p={12} withBorder>
                 <Group justify="space-between" align="center">
                   <Stack>
                     <Text>{session.createdAt}</Text>
-                    {session?.score > 0 && (
+                    {session?.isComplete && (
                       <Group>
                         <Text>
                           {session?.score} /{" "}
@@ -94,7 +99,7 @@ const PackageQuizDetailPage = () => {
                     )}
                   </Stack>
                   <Group>
-                    {session?.score < 1 && (
+                    {session?.isComplete < 1 && (
                       <Button
                         onClick={() =>
                           handleContinueTryout(
